@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
@@ -65,4 +67,16 @@ public class GameManager : MonoBehaviour
 
         PauseGame();
     }  
+
+    public void RestartLevel()
+    {
+        if(_isPaused)
+        {
+            UnpauseGame();
+        }
+
+        _isGameOver = false;
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); 
+    }
 }
